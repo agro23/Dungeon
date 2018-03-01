@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 01, 2018 at 03:34 AM
+-- Generation Time: Mar 01, 2018 at 01:44 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.15
 
@@ -151,7 +151,7 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `name`, `short_description`, `full_description`, `light`, `commands`) VALUES
-(1, 'Foyer', 'An entryway into the dungeon.', 'A dank, smelly entryway. It leads into a long, dark corridor that seems to slope downwards. Cobwebs reach for you from the ceiling.', 0, 'Search, Look, Describe, Use'),
+(1, 'Foyer', '', '', 0, ''),
 (4, 'lil Meat Locker', '', '', 0, '');
 
 --
@@ -240,7 +240,7 @@ ALTER TABLE `pcs`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
