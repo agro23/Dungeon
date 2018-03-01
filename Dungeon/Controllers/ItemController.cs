@@ -36,8 +36,19 @@ namespace Dungeon.Controllers
     public ActionResult Details(int id)
     {
       Item thisItem = Item.Find(id);
-      thisItem.Update(Request.Form["updatedItemName"]);
-      return View("ItemDetails", thisItem);
+      string temp_Name = Request.Form["updatedItemName"];
+      string temp_Type = Request.Form["updatedItemType"];
+      string temp_Special = Request.Form["updatedItemSpecial"];
+      int temp_MagicInt = Int32.Parse(Request.Form["updatedItemMagic"]);
+      bool temp_MagicBool = false;
+      if (temp_MagicInt == 1){temp_MagicBool = true;}
+      else {}
+
+      thisItem.Update(temp_Name, temp_Type, temp_Special, temp_MagicBool);
+
+      Item thisUpdatedItem = Item.Find(id);
+
+      return View("ItemDetails", thisUpdatedItem);
     }
 
   }

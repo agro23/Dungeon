@@ -9,14 +9,17 @@ namespace Dungeon.Models
     public class Item
     {
         private string _name;
-        // private string _type;
-        // private string _special;
-        // private bool _magic;
+        private string _type;
+        private string _special;
+        private bool _magic;
         private int _id;
 
-        public Item(string name, int id = 0)
+        public Item(string Name, string Type = "Type", string Special = "Special", bool Magic = true, int id = 0)
         {
-            _name = name;
+            _name = Name;
+            _type = Type;
+            _special = Special;
+            _magic = Magic;
             _id = id;
         }
 
@@ -45,20 +48,20 @@ namespace Dungeon.Models
             return _name;
         }
 
-        // public string GetType()
-        // {
-        //     return _type;
-        // }
-        //
-        // public string GetSpecial()
-        // {
-        //     return _special;
-        // }
-        //
-        // public bool GetMagic()
-        // {
-        //     return _magic;
-        // }
+        public string GetItemType()
+        {
+            return _type;
+        }
+
+        public string GetSpecial()
+        {
+            return _special;
+        }
+
+        public bool GetMagic()
+        {
+            return _magic;
+        }
 
         public int GetId()
         {
@@ -81,8 +84,11 @@ namespace Dungeon.Models
             while(rdr.Read())
             {
               int itemId = rdr.GetInt32(0);
-              string itemDescription = rdr.GetString(1);
-              Item newItem = new Item(itemDescription, itemId);
+              string itemName = rdr.GetString(1);
+              string itemType = rdr.GetString(2);
+              string itemSpecial = rdr.GetString(3);
+              bool itemMagic = rdr.GetBoolean(4);
+              Item newItem = new Item(itemName, itemType, itemSpecial, itemMagic, itemId);
               allItems.Add(newItem);
             }
             conn.Close();
@@ -115,22 +121,42 @@ namespace Dungeon.Models
             }
         }
 
-        public void Update(string newName)
+        public void Update(string newName, string newType, string newSpecial, bool newMagic)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"UPDATE items SET name = @newName WHERE id = @searchId;";
+            cmd.CommandText = @"UPDATE items SET name = @newName, type = @newType, special = @newSpecial, magic = @newMagic WHERE id = @searchId;";
 
+            //search id
             MySqlParameter searchId = new MySqlParameter();
             searchId.ParameterName = "@searchId";
             searchId.Value = _id;
             cmd.Parameters.Add(searchId);
 
+            //name
             MySqlParameter name = new MySqlParameter();
             name.ParameterName = "@newName";
             name.Value = newName;
             cmd.Parameters.Add(name);
+
+            // type
+            MySqlParameter type = new MySqlParameter();
+            type.ParameterName = "@newType";
+            type.Value = newType;
+            cmd.Parameters.Add(type);
+
+            //special
+            MySqlParameter special = new MySqlParameter();
+            special.ParameterName = "@newSpecial";
+            special.Value = newSpecial;
+            cmd.Parameters.Add(special);
+
+            //magic
+            MySqlParameter magic = new MySqlParameter();
+            magic.ParameterName = "@newMagic";
+            magic.Value = newMagic;
+            cmd.Parameters.Add(magic);
 
             cmd.ExecuteNonQuery();
             _name = newName;
@@ -156,14 +182,20 @@ namespace Dungeon.Models
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
             int itemId = 0;
             string itemName = "";
+            string itemType = "";
+            string itemSpecial = "";
+            bool itemMagic = false;
 
             while(rdr.Read())
             {
               itemId = rdr.GetInt32(0);
               itemName = rdr.GetString(1);
+              itemType = rdr.GetString(2);
+              itemSpecial = rdr.GetString(3);
+              itemMagic = rdr.GetBoolean(4);
             }
 
-            Item newItem = new Item(itemName, itemId);
+            Item newItem = new Item(itemName, itemType, itemSpecial, itemMagic, itemId);
             conn.Close();
             if (conn != null)
             {

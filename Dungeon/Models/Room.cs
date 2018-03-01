@@ -301,10 +301,13 @@ namespace Dungeon.Models
 
             while(rdr.Read())
             {
-                int itemId = rdr.GetInt32(0);
-                string itemName = rdr.GetString(1);
-                Item newItem = new Item(itemName, itemId);
-                items.Add(newItem);
+              int itemId = rdr.GetInt32(0);
+              string itemName = rdr.GetString(1);
+              string itemType = rdr.GetString(2);
+              string itemSpecial = rdr.GetString(3);
+              bool itemMagic = rdr.GetBoolean(4);
+              Item newItem = new Item(itemName, itemType, itemSpecial, itemMagic, itemId);
+              items.Add(newItem);
             }
             conn.Close();
             if (conn != null)
