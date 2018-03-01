@@ -88,3 +88,16 @@ label {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.flip {
+  -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.title {
+  background-color: #000;
+}
+
+.title-font{
+  font-size: 2.4em;
+}
