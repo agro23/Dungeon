@@ -170,7 +170,15 @@ namespace Dungeon.Models
             // light
             MySqlParameter light = new MySqlParameter();
             light.ParameterName = "@newLight";
-            light.Value = newLight;
+            Console.WriteLine("Light is " + newLight);
+            if (newLight)
+            {
+                light.Value = 1;
+            }
+            else
+            {
+                light.Value = 0;
+            }
             cmd.Parameters.Add(light);
 
             // commands

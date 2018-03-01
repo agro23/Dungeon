@@ -70,7 +70,7 @@ namespace Dungeon.Controllers
         {
             string selectedLight = Request.Form["light"].ToString();
             Console.WriteLine("Light is: " + selectedLight);
-            if (selectedLight == "On") { temp_Light = true; }
+            if (selectedLight == "lit") { temp_Light = true; }
         }
         string temp_Commands= Request.Form["updatedRoomCommands"];
 
