@@ -15,32 +15,11 @@ namespace Dungeon.Controllers
         return View("RoomIndex", allRooms);
       }
 
-      // [HttpPost("/rooms")]
-      // public ActionResult Create()
-      // {
-      //   string name = Request.Form["newRoomName"];
-      //   Room newRoom = new Room(name);
-      //   newRoom.Save();
-      //   List<Room> allRooms = Room.GetAll();
-      //   return View("RoomIndex", allRooms);
-      // }
-
       [HttpPost("/rooms")]
       public ActionResult Create()
       {
-        string temp_Name = Request.Form["updatedRoomName"];
-        string temp_ShortDescription = Request.Form["updatedRoomShortDescription"];
-        string temp_FullDescription= Request.Form["updatedRoomFullDescription"];
-        bool temp_Light = false;
-        if (Request.Form["light"] != "")
-        {
-            string selectedLight = Request.Form["light"].ToString();
-            if (selectedLight == "On") { temp_Light = true; }
-        }
-        string temp_Commands= Request.Form["updatedRoomCommands"];
-
-        Room newRoom = new Room(temp_Name, temp_ShortDescription, temp_FullDescription, temp_Light, temp_Commands);
-
+        string temp_Name = Request.Form["newRoomName"];
+        Room newRoom = new Room(temp_Name);
         newRoom.Save();
         List<Room> allRooms = Room.GetAll();
         return View("RoomIndex", allRooms);
@@ -56,12 +35,7 @@ namespace Dungeon.Controllers
       [HttpPost("/rooms/update/{id}")]
       public ActionResult Details(int id)
       {
-        // Room thisRoom = Room.Find(id);
-        // thisRoom.Update(Request.Form["updatedRoomName"]);
-        // return View("RoomDetails", thisRoom);
-
         Room thisRoom = Room.Find(id);
-
         string temp_Name = Request.Form["updatedRoomName"];
         string temp_ShortDescription = Request.Form["updatedRoomShortDescription"];
         string temp_FullDescription= Request.Form["updatedRoomFullDescription"];

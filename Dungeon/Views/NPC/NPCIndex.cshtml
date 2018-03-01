@@ -3,7 +3,8 @@
 }
 <div class="container text-center">
   <h1>NPC Editor</h1>
-  <div>
+  <div class="well">
+    <h4>Select NPC to View</h4>
     <form class="form-group" action="/npcs/details/{id}" method="post">
       <select class="form-control" name="id" id="id">
       <option value="0">Empty</option>
@@ -20,9 +21,10 @@
       <button type="submit" class="btn btn-danger">View NPC</button>
     </form>
   </div>
-  <div>
+  <div class="well">
+    <h4>Create A New NPC</h4>
     <form class="form-group" action="/npcs" method="post">
-      <input type="text" name="newNPCName" value="" placeholder="Enter NPC name">
+      <input class="form-control" type="text" name="newNPCName" value="" placeholder="Enter NPC name">
       <button type="submit" class="btn btn-danger">Add NPC</button>
     </form>
   </div>
