@@ -141,7 +141,7 @@ CREATE TABLE `rooms` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `short_description` varchar(255) NOT NULL,
-  `full_description` varchar(255) NOT NULL,
+  `full_description` text NOT NULL,
   `light` tinyint(1) NOT NULL,
   `commands` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

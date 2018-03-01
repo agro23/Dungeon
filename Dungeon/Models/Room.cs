@@ -18,7 +18,7 @@ namespace Dungeon.Models
         private int _id;
         // We no longer declare _RoomId here
 
-        public Room(string name, string shortDescription, string fullDescription, bool light, string commands, int id = 0)
+        public Room(string name, string shortDescription = "", string fullDescription = "", bool light = false, string commands = "", int id = 0)
         {
             _name = name;
             _shortDescription = shortDescription;
