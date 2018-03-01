@@ -5,15 +5,17 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="well detail">
+        <br><br>
         <h1>Item Details</h1>
         <h3>Item: @Model.GetName()</h3>
         <h3>Type: @Model.GetItemType()</h3>
         <h3>Special: @Model.GetSpecial()</h3>
         <h3>Magic: @Model.GetMagic()</h3>
+        <br><br>
       </div>
     </div>
     <div class="col-sm-8">
-      <div class="well" id="form">
+      <div class="well update-form">
         <form class="form-group" action="/items/update/@Model.GetId()" method="post">
           <label for="updatedPCName">Item Name</label>
           <input class="form-control" type="text" name="updatedItemName" value="@Model.GetName()" required>

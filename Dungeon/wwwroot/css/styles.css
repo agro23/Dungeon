@@ -1,14 +1,22 @@
+@font-face {
+  font-family: myFont;
+  src: url(../fonts/Immortal.ttf);
+}
+
+
 body {
-  background-color: #666;
+  background-image: url("../img/bg.jpg");
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  font-family: myFont;
 }
 
 h1 {
   color: red;
 }
 
-.detail {
-  height: 100%;
-}
+
 
 ul {
   text-align: center;
@@ -42,4 +50,41 @@ label {
 
 .btn-danger {
   margin-top: 10px;
+}
+
+.well {
+  padding-top:120px;
+  padding-bottom:110px;
+  padding-right:90px;
+  padding-left:90px;
+  background-color: rgba(200, 200, 200, 0.0);
+  border: none;
+}
+
+.detail {
+  background-image: url("../img/parchment.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.update-form {
+  background-image: url("../img/parchmentWide2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.footer {
+  background-image: url("../img/parchmentExtraWide.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.viewer, .adder {
+  background-image: url("../img/verywide.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }

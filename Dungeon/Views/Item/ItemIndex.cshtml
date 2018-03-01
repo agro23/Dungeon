@@ -2,8 +2,8 @@
   Layout = "_Layout";
 }
 <div class="container text-center">
-  <h1>Item Editor</h1>
-  <div class="well">
+  <div class="well viewer">
+    <h1>Item Editor</h1>
     <form class="form-group" action="/items/details/{id}" method="post">
       <h4>Select Item to View</h4>
       <select class="form-control" name="id" id="id">
@@ -21,7 +21,7 @@
       <button type="submit" class="btn btn-danger">View Item</button>
     </form>
   </div>
-  <div class="well">
+  <div class="well adder">
     <h4>Create A New Item</h4>
     <form class="form-group" action="/items" method="post">
       <input class="form-control" type="text" name="newItemName" value="" placeholder="Enter item name">
