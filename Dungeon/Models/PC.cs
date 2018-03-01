@@ -160,6 +160,7 @@ namespace Dungeon.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
+
             cmd.CommandText = @"UPDATE pcs SET name = @newName, type = @newType,
             hp = @newHP, ac = @newAC,
             damage = @newDamage, lvl = @newLVL,
