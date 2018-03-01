@@ -9,13 +9,13 @@
   <h3>Lighted: @Model.GetLight()</h3>
   <h3>Commands: @Model.GetCommands()</h3>
 
-  private string _name;
+  <!-- private string _name;
   private string _shortDescription;
   private string _fullDescription;
   private bool _light;
   private string _commands;
-  private int _id;
-
+  private int _id; -->
+<hr>
   <form class="form-group" action="/rooms/update/@Model.GetId()" method="post">
     <label for="updatedRoomName">Room Name</label>
     <input class="form-control" type="text" name="updatedRoomName" value="@Model.GetName()" required>
