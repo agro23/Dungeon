@@ -28,18 +28,9 @@ namespace Dungeon.Controllers
       [HttpPost("/rooms")]
       public ActionResult Create()
       {
-        string temp_Name = Request.Form["updatedRoomName"];
-        string temp_ShortDescription = Request.Form["updatedRoomShortDescription"];
-        string temp_FullDescription= Request.Form["updatedRoomFullDescription"];
-        bool temp_Light = false;
-        if (Request.Form["light"] != "")
-        {
-            string selectedLight = Request.Form["light"].ToString();
-            if (selectedLight == "On") { temp_Light = true; }
-        }
-        string temp_Commands= Request.Form["updatedRoomCommands"];
+        string temp_Name = Request.Form["newRoomName"];
 
-        Room newRoom = new Room(temp_Name, temp_ShortDescription, temp_FullDescription, temp_Light, temp_Commands);
+        Room newRoom = new Room(temp_Name);
 
         newRoom.Save();
         List<Room> allRooms = Room.GetAll();
