@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 01, 2018 at 03:34 AM
+-- Generation Time: Mar 02, 2018 at 02:03 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.15
 
@@ -65,7 +65,8 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `name`, `type`, `special`, `magic`) VALUES
-(1, 'Nasty Sword', '', '', 0);
+(1, 'Nasty Sword', 'Weapon', '+5 Vorpal', 1),
+(2, 'Test Wand', 'Wand', 'USE-->\"It blows up in your face!\"-->DAM:6', 1);
 
 -- --------------------------------------------------------
 
@@ -101,7 +102,7 @@ CREATE TABLE `npcs` (
 --
 
 INSERT INTO `npcs` (`id`, `name`, `type`, `hp`, `ac`, `damage`, `lvl`, `room_id`) VALUES
-(1, 'Jem Orc', '', 0, 0, 0, 0, 0);
+(1, 'Jem Orc', 'Monster', 16, 9, 6, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -127,9 +128,10 @@ CREATE TABLE `pcs` (
 
 INSERT INTO `pcs` (`id`, `name`, `type`, `hp`, `ac`, `damage`, `lvl`, `exp`, `room_id`) VALUES
 (1, 'Not Empty', 'Dragon Librarian\'s Butt', 0, 333, 2, 1, 0, 2),
-(2, 'Blah the Habit-forming Tree', 'no', 44, 10, 500, 22, 0, 43),
-(3, 'James Orcus', 'Package Sniffer', 4, 0, 3, 2, 0, 5),
-(4, 'Joe ', 'Ninja', 44, 222, 33, 63, 350, 33);
+(2, 'Fred the Knight', 'Fighter', 10, 8, 8, 1, 0, 1),
+(3, 'James Orcus', 'Package Swiffer', 14, 0, 3, 2, 0, 5),
+(4, 'Joe the Mountain', 'Ninja Sculpture', 44, 222, 0, 63, 3500, 33),
+(5, 'Derf The Straggler', 'Monk', 14, 6, 8, 1, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -141,7 +143,7 @@ CREATE TABLE `rooms` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `short_description` varchar(255) NOT NULL,
-  `full_description` varchar(255) NOT NULL,
+  `full_description` text NOT NULL,
   `light` tinyint(1) NOT NULL,
   `commands` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -151,8 +153,11 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `name`, `short_description`, `full_description`, `light`, `commands`) VALUES
-(1, 'Foyer', 'An entryway into the dungeon.', 'A dank, smelly entryway. It leads into a long, dark corridor that seems to slope downwards. Cobwebs reach for you from the ceiling.', 0, 'Search, Look, Describe, Use'),
-(4, 'lil Meat Locker', '', '', 0, '');
+(1, 'Foyer', 'An entryway into the dungeon.', 'A dank, smelly entryway. It leads into a long, dark corridor that seems to slope downwards. Cobwebs reach for you from the ceiling.', 1, 'Search, Look, Describe, Use'),
+(4, 'lil Meat Locker', 'This is the room where they keeps they meats.', 'A room of naked stone walls dripping with moisture, clumped with lichens, mushrooms, and green slime in places. It smells like rot to match the decaying carcasses of several unknown animals hung on a few hooks descending from a strange rack system of corroded rails running an odd network across the ceiling.', 0, 'Search, Get, Examine, Move'),
+(5, 'Test Room', '', '', 0, ''),
+(6, 'Another Room', '', '', 0, ''),
+(7, 'Hallway', 'Test', 'Test', 1, 'Move');
 
 --
 -- Indexes for dumped tables
@@ -220,7 +225,7 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `loot`
 --
@@ -235,12 +240,12 @@ ALTER TABLE `npcs`
 -- AUTO_INCREMENT for table `pcs`
 --
 ALTER TABLE `pcs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
